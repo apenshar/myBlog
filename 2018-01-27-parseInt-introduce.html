@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Linux,HTTP," />
+  <meta name="keywords" content="js," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="利用curl模拟HTTPcurl是一种命令行工具，作用是发出网络请求，然后得到和提取数据。curl网站开发指南 123456789101112131415#GET请求curl --trace output.txt www.sina.comcurl -s -v -H &quot;Accept: application/json&quot;  &quot;https:www.baidu.com&quot; curl -X GET --hea">
-<meta name="keywords" content="Linux,HTTP">
+<meta name="description" content="解释：parseInt函数可以将一个将字符串按照指定的进制转化，得到最终的计算结果 parseInt(string, radix)  string: 需要转化的字符，如果不是字符串会被转换，忽视空格符。 radix：数字2-36之前的整型。默认使用10，表示十进制。需要注意的是，如果radix在2-36之外会返回NaN。如果radix为0，就返回一个与string等值的number。 Tips ：">
+<meta name="keywords" content="js">
 <meta property="og:type" content="article">
-<meta property="og:title" content="curl-introduce">
-<meta property="og:url" content="https://apenshar.github.io/myBlog/2017-12-11-curl-introduce.html">
+<meta property="og:title" content="parseInt-introduce">
+<meta property="og:url" content="https://apenshar.github.io/myBlog/2018-01-27-parseInt-introduce.html">
 <meta property="og:site_name" content="Apen Shar&#39;s Tech Blog">
-<meta property="og:description" content="利用curl模拟HTTPcurl是一种命令行工具，作用是发出网络请求，然后得到和提取数据。curl网站开发指南 123456789101112131415#GET请求curl --trace output.txt www.sina.comcurl -s -v -H &quot;Accept: application/json&quot;  &quot;https:www.baidu.com&quot; curl -X GET --hea">
+<meta property="og:description" content="解释：parseInt函数可以将一个将字符串按照指定的进制转化，得到最终的计算结果 parseInt(string, radix)  string: 需要转化的字符，如果不是字符串会被转换，忽视空格符。 radix：数字2-36之前的整型。默认使用10，表示十进制。需要注意的是，如果radix在2-36之外会返回NaN。如果radix为0，就返回一个与string等值的number。 Tips ：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-27T13:38:13.431Z">
+<meta property="og:updated_time" content="2018-01-29T15:57:56.527Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="curl-introduce">
-<meta name="twitter:description" content="利用curl模拟HTTPcurl是一种命令行工具，作用是发出网络请求，然后得到和提取数据。curl网站开发指南 123456789101112131415#GET请求curl --trace output.txt www.sina.comcurl -s -v -H &quot;Accept: application/json&quot;  &quot;https:www.baidu.com&quot; curl -X GET --hea">
+<meta name="twitter:title" content="parseInt-introduce">
+<meta name="twitter:description" content="解释：parseInt函数可以将一个将字符串按照指定的进制转化，得到最终的计算结果 parseInt(string, radix)  string: 需要转化的字符，如果不是字符串会被转换，忽视空格符。 radix：数字2-36之前的整型。默认使用10，表示十进制。需要注意的是，如果radix在2-36之外会返回NaN。如果radix为0，就返回一个与string等值的number。 Tips ：">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://apenshar.github.io/myBlog/2017-12-11-curl-introduce.html"/>
+  <link rel="canonical" href="https://apenshar.github.io/myBlog/2018-01-27-parseInt-introduce.html"/>
 
 
 
 
 
-  <title>curl-introduce | Apen Shar's Tech Blog</title>
+  <title>parseInt-introduce | Apen Shar's Tech Blog</title>
   
 
 
@@ -253,7 +253,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://apenshar.github.io/myBlog/myBlog/2017-12-11-curl-introduce.html">
+    <link itemprop="mainEntityOfPage" href="https://apenshar.github.io/myBlog/myBlog/2018-01-27-parseInt-introduce.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Apen Shar">
@@ -270,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">curl-introduce</h1>
+          <h1 class="post-title" itemprop="name headline">parseInt-introduce</h1>
         
 
         <div class="post-meta">
@@ -282,8 +282,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-11T21:06:03+08:00">
-                2017-12-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-27T23:59:36+08:00">
+                2018-01-27
               </time>
             
 
@@ -320,24 +320,19 @@
       
 
       
-        <h4 id="利用curl模拟HTTP"><a href="#利用curl模拟HTTP" class="headerlink" title="利用curl模拟HTTP"></a>利用curl模拟HTTP</h4><p>curl是一种命令行工具，作用是发出网络请求，然后得到和提取数据。<a href="https://link.jianshu.com/?t=http://www.ruanyifeng.com/blog/2011/09/curl.html" target="_blank" rel="noopener">curl网站开发指南</a></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>GET请求curl --trace output.txt www.sina.com</span><br><span class="line"></span><br><span class="line">curl -s -v -H "Accept: application/json"  "https:www.baidu.com" </span><br><span class="line">curl -X GET --header 'Accept: application/json' </span><br><span class="line">--header 'Authorization: eyJ0eX_snA'"https://www.baidu.com" </span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>POST请求</span><br><span class="line">curl -X POST -s -v -H 'Accept: application/json' "https://www.baidu.com"</span><br><span class="line"><span class="meta">#</span>带有POST参数请求</span><br><span class="line">curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' </span><br><span class="line">--header 'Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjaGFubmVsIjoisnA' </span><br><span class="line">-d '&#123; \ </span><br><span class="line">   "money": 12000, \ </span><br><span class="line">   "userIp": "" \ </span><br><span class="line"> &#125;' "https:www.baidu.com"</span><br></pre></td></tr></table></figure>
-<ol>
-<li><p>-X    curl默认的HTTP动词是GET，使用<code>-X</code>参数可以支持其他动词。</p>
-</li>
-<li><p>-H  or –header     自定义请求头</p>
-</li>
-<li><p>-d     带body数据</p>
-</li>
-<li><p>-v     显示一次http通信的整个过程，包括端口连接和http request头信息。</p>
-</li>
-<li><p>-i      显示http response的头信息，连同网页代码一起。</p>
-</li>
-<li><p>-o     下载文件</p>
-</li>
-<li><p>–trace     显示最详细的通信过程</p>
-</li>
-</ol>
+        <p>解释：<code>parseInt</code>函数可以将一个将字符串按照指定的进制转化，得到最终的计算结果</p>
+<p><strong>parseInt(string, radix)</strong> </p>
+<p>string: 需要转化的字符，如果不是字符串会被转换，忽视空格符。</p>
+<p>radix：数字2-36之前的整型。默认使用10，表示十进制。需要注意的是，如果<strong>radix</strong>在2-36之外会返回NaN。如果<strong>radix</strong>为0，就返回一个与string等值的<code>number</code>。</p>
+<p>Tips ： </p>
+<p>因为是按照radix指定的进制，所以字符串的除了个位以外的数都必须小于<strong>radix</strong>，否则返回NaN；如果个位数 大于等于 <strong>radix</strong>，那么string舍弃个位，退一位。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">parseInt</span>(<span class="string">'67'</span>,<span class="number">1</span>)</span><br><span class="line"><span class="comment">//NaN</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">'77'</span>,<span class="number">0</span>)</span><br><span class="line"><span class="comment">//77</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">'77'</span>,<span class="number">8</span>)</span><br><span class="line"><span class="comment">//63</span></span><br><span class="line"></span><br><span class="line"> <span class="built_in">parseInt</span>(<span class="string">'78'</span>,<span class="number">8</span>)</span><br><span class="line"><span class="comment">//7</span></span><br><span class="line"></span><br><span class="line"> <span class="built_in">parseInt</span>(<span class="string">'79'</span>,<span class="number">8</span>)</span><br><span class="line"><span class="comment">//7</span></span><br></pre></td></tr></table></figure>
+<p>我们先自行构建一个<code>parseInt</code>函数，它可以接受3个参数，从结果可以就看出，<code>map</code>函数可以接受3个参数，<code>value</code>,<code>key</code>,<code>array</code>，第三个参数为其本身。</p>
+<p><code>parseInt</code>函数是一个将字符串</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="built_in">parseInt</span> = <span class="function"><span class="keyword">function</span> (<span class="params">string, radix, others</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> string + <span class="string">'-'</span> + radix + <span class="string">'-'</span> + others;</span><br><span class="line">&#125;;</span><br><span class="line">[<span class="string">'1'</span>,<span class="string">'2'</span>,<span class="string">'3'</span>].map(<span class="built_in">parseInt</span>);</span><br><span class="line"><span class="comment">//[1-0-1,2,3]</span></span><br><span class="line"><span class="comment">//[2-1-1,2,3]</span></span><br><span class="line"><span class="comment">//[3-2-1,2,3]</span></span><br></pre></td></tr></table></figure>
+<p>那么下面这道面试题就迎刃而解了：</p>
+<p><strong>[“1”, “2”, “3”].map(parseInt)</strong>得到什么？</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">"1"</span>, <span class="string">"2"</span>, <span class="string">"3"</span>].map(<span class="built_in">parseInt</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//parseInt('1', 0);  1</span></span><br><span class="line"><span class="comment">//parseInt('2', 1);  NaN</span></span><br><span class="line"><span class="comment">//parseInt('3', 2);  NaN</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -355,9 +350,7 @@
       
         <div class="post-tags">
           
-            <a href="/myBlog/tags/Linux/" rel="tag"># Linux</a>
-          
-            <a href="/myBlog/tags/HTTP/" rel="tag"># HTTP</a>
+            <a href="/myBlog/tags/js/" rel="tag"># js</a>
           
         </div>
       
@@ -370,8 +363,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/myBlog/2017-09-22-fe-algorithm.html" rel="next" title="前端常见算法">
-                <i class="fa fa-chevron-left"></i> 前端常见算法
+              <a href="/myBlog/2018-01-27-prototype-introduce.html" rel="next" title="prototype-introduce">
+                <i class="fa fa-chevron-left"></i> prototype-introduce
               </a>
             
           </div>
@@ -380,8 +373,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/myBlog/2017-12-25-date-introduce.html" rel="prev" title="Date-introduce">
-                Date-introduce <i class="fa fa-chevron-right"></i>
+              <a href="/myBlog/2018-01-29-parcel-introduce.html" rel="prev" title="parcel-introduce">
+                parcel-introduce <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -434,17 +427,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -495,22 +479,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#利用curl模拟HTTP"><span class="nav-number">1.</span> <span class="nav-text">利用curl模拟HTTP</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
