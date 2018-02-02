@@ -116,33 +116,6 @@
   </entry>
   
   <entry>
-    <title>prototype-introduce</title>
-    <link href="https://apenshar.github.io/myBlog/2018-01-27-prototype-introduce.html"/>
-    <id>https://apenshar.github.io/myBlog/2018-01-27-prototype-introduce.html</id>
-    <published>2018-01-27T13:06:03.000Z</published>
-    <updated>2018-01-27T13:31:00.837Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="原型链-prototype"><a href="#原型链-prototype" class="headerlink" title="原型链(prototype)"></a>原型链(prototype)</h3><p>  javascript 权威指南读书笔记</p><h5 id="必备知识点："><a href="#必备知识点：" class="headerlink" title="必备知识点："></a>必备知识点：</h5><ol><li>每一个JavaScript <strong>对象</strong> 都具有的一个属性，叫 <code>__proto__</code> 。<br>这个属性会指向创建该对象的<code>prototype</code> 。</li><li>每个 <strong>函数</strong> 都有一个 <code>prototype</code> 属性（原型），这个属性是一个指针，指向一个对象</li><li>原型并没有属性指向实例，因为通过构造函数可以生成多个实例。<br>但是原型是有属性指向<strong>构造函数</strong>，这个属性就是<code>constructor</code>。每个原型都有一个<code>constructor</code>属性指向关联的构造函数</li><li>调用 <code>new</code> 构造函数的创建一个新的空对象，这个对象继承自构造函数的<code>prototype</code>属性</li><li>构造函数试图初始化新创建的对象，并将这个对象用作其调用上下文，因此构造函数可以使用<code>this</code>来引用这个新对象</li><li>注意，尽管构造函数看起来像一个方法，但是它使用这个新对象作为调用上下文。也就是说，<code>new O.m()</code> 中 调用的上下文并不是O</li><li>构造函数通常不用<code>return</code> 关键字，他们通常初始化新对象，当构造函数执行完毕时，显示返回；在这情况下，构造函数的计算结果就是这个新对象的值</li></ol><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">new操作符其实就是一个语法糖，可以减少代码量，在创建过程中会发生</span></span><br><span class="line"><span class="comment">        a. 创建一个新对象</span></span><br><span class="line"><span class="comment">        b. 将构造函数的作用域赋值给新对象（因此this就指向了这个对象）</span></span><br><span class="line"><span class="comment">        c. 执行构造函数中的代码（为这个新对象赋值）</span></span><br><span class="line"><span class="comment">        d. 返回这个对象</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> man = <span class="keyword">new</span> Person(<span class="string">"A"</span>);</span><br><span class="line">man.__proto__ == Person.prototype <span class="comment">// true </span></span><br><span class="line">Person.prototype.constructor  ===  Person<span class="comment">// true</span></span><br></pre></td></tr></table></figure><h5 id="深入了解"><a href="#深入了解" class="headerlink" title="深入了解"></a>深入了解</h5><p>知识点8： 当读取实例的属性时，会先查找与对象关联的原型中的属性，如果没有，就去找原型的原型，一直找到最顶层。</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name; </span><br><span class="line">&#125;</span><br><span class="line">Person.prototype.age = <span class="number">18</span>;</span><br><span class="line"><span class="keyword">var</span> man = <span class="keyword">new</span> Person(<span class="string">"A"</span>);</span><br><span class="line">man.age = <span class="number">20</span>;</span><br><span class="line">man.age <span class="comment">// 20</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">delete</span> man.age  <span class="comment">// true </span></span><br><span class="line">man.age <span class="comment">// 18</span></span><br></pre></td></tr></table></figure><p>知识点9： 上面我们知道了实例的<code>__proto__</code>指向构造函数，那么构造函数也会有<code>__proto__</code>,它指向的是<code>Object.prototype</code></p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">man.__proto__.__proto__ == <span class="built_in">Object</span>.prototype <span class="comment">// true</span></span><br></pre></td></tr></table></figure><p>知识点10： 那么<code>Object.prototype</code> 的原型呢？ 我们已经知道了对象的<code>__proto</code>会指向原型,那么再试一次好了</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.prototype.__proto__  <span class="comment">// null 等价于下面表达式</span></span><br><span class="line">man.__proto__.__proto__.__proto__ <span class="comment">// null</span></span><br></pre></td></tr></table></figure><p>所以在查找属性的时候，我们只需要查到 Object.prototype 就可以了，再往上就是<code>null</code>了。</p><p><img src="https://upload-images.jianshu.io/upload_images/7390508-4cbe3a1b7aa0afff.png?imageMogr2/auto-orient/" alt="img"></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;原型链-prototype&quot;&gt;&lt;a href=&quot;#原型链-prototype&quot; class=&quot;headerlink&quot; title=&quot;原型链(prototype)&quot;&gt;&lt;/a&gt;原型链(prototype)&lt;/h3&gt;&lt;p&gt;  javascript 权威指南读书笔记&lt;/p
-      
-    
-    </summary>
-    
-    
-      <category term="js" scheme="https://apenshar.github.io/myBlog/tags/js/"/>
-    
-      <category term="面向对象编程" scheme="https://apenshar.github.io/myBlog/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/"/>
-    
-      <category term="原型链" scheme="https://apenshar.github.io/myBlog/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/"/>
-    
-  </entry>
-  
-  <entry>
     <title>IEF-introduce</title>
     <link href="https://apenshar.github.io/myBlog/2018-01-27-IEF-introduce.html"/>
     <id>https://apenshar.github.io/myBlog/2018-01-27-IEF-introduce.html</id>
@@ -167,6 +140,33 @@
       <category term="function" scheme="https://apenshar.github.io/myBlog/tags/function/"/>
     
       <category term="IEF" scheme="https://apenshar.github.io/myBlog/tags/IEF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>prototype-introduce</title>
+    <link href="https://apenshar.github.io/myBlog/2018-01-27-prototype-introduce.html"/>
+    <id>https://apenshar.github.io/myBlog/2018-01-27-prototype-introduce.html</id>
+    <published>2018-01-27T13:06:03.000Z</published>
+    <updated>2018-01-27T13:31:00.837Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="原型链-prototype"><a href="#原型链-prototype" class="headerlink" title="原型链(prototype)"></a>原型链(prototype)</h3><p>  javascript 权威指南读书笔记</p><h5 id="必备知识点："><a href="#必备知识点：" class="headerlink" title="必备知识点："></a>必备知识点：</h5><ol><li>每一个JavaScript <strong>对象</strong> 都具有的一个属性，叫 <code>__proto__</code> 。<br>这个属性会指向创建该对象的<code>prototype</code> 。</li><li>每个 <strong>函数</strong> 都有一个 <code>prototype</code> 属性（原型），这个属性是一个指针，指向一个对象</li><li>原型并没有属性指向实例，因为通过构造函数可以生成多个实例。<br>但是原型是有属性指向<strong>构造函数</strong>，这个属性就是<code>constructor</code>。每个原型都有一个<code>constructor</code>属性指向关联的构造函数</li><li>调用 <code>new</code> 构造函数的创建一个新的空对象，这个对象继承自构造函数的<code>prototype</code>属性</li><li>构造函数试图初始化新创建的对象，并将这个对象用作其调用上下文，因此构造函数可以使用<code>this</code>来引用这个新对象</li><li>注意，尽管构造函数看起来像一个方法，但是它使用这个新对象作为调用上下文。也就是说，<code>new O.m()</code> 中 调用的上下文并不是O</li><li>构造函数通常不用<code>return</code> 关键字，他们通常初始化新对象，当构造函数执行完毕时，显示返回；在这情况下，构造函数的计算结果就是这个新对象的值</li></ol><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">new操作符其实就是一个语法糖，可以减少代码量，在创建过程中会发生</span></span><br><span class="line"><span class="comment">        a. 创建一个新对象</span></span><br><span class="line"><span class="comment">        b. 将构造函数的作用域赋值给新对象（因此this就指向了这个对象）</span></span><br><span class="line"><span class="comment">        c. 执行构造函数中的代码（为这个新对象赋值）</span></span><br><span class="line"><span class="comment">        d. 返回这个对象</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> man = <span class="keyword">new</span> Person(<span class="string">"A"</span>);</span><br><span class="line">man.__proto__ == Person.prototype <span class="comment">// true </span></span><br><span class="line">Person.prototype.constructor  ===  Person<span class="comment">// true</span></span><br></pre></td></tr></table></figure><h5 id="深入了解"><a href="#深入了解" class="headerlink" title="深入了解"></a>深入了解</h5><p>知识点8： 当读取实例的属性时，会先查找与对象关联的原型中的属性，如果没有，就去找原型的原型，一直找到最顶层。</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name; </span><br><span class="line">&#125;</span><br><span class="line">Person.prototype.age = <span class="number">18</span>;</span><br><span class="line"><span class="keyword">var</span> man = <span class="keyword">new</span> Person(<span class="string">"A"</span>);</span><br><span class="line">man.age = <span class="number">20</span>;</span><br><span class="line">man.age <span class="comment">// 20</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">delete</span> man.age  <span class="comment">// true </span></span><br><span class="line">man.age <span class="comment">// 18</span></span><br></pre></td></tr></table></figure><p>知识点9： 上面我们知道了实例的<code>__proto__</code>指向构造函数，那么构造函数也会有<code>__proto__</code>,它指向的是<code>Object.prototype</code></p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">man.__proto__.__proto__ == <span class="built_in">Object</span>.prototype <span class="comment">// true</span></span><br></pre></td></tr></table></figure><p>知识点10： 那么<code>Object.prototype</code> 的原型呢？ 我们已经知道了对象的<code>__proto</code>会指向原型,那么再试一次好了</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.prototype.__proto__  <span class="comment">// null 等价于下面表达式</span></span><br><span class="line">man.__proto__.__proto__.__proto__ <span class="comment">// null</span></span><br></pre></td></tr></table></figure><p>所以在查找属性的时候，我们只需要查到 Object.prototype 就可以了，再往上就是<code>null</code>了。</p><p><img src="https://upload-images.jianshu.io/upload_images/7390508-4cbe3a1b7aa0afff.png?imageMogr2/auto-orient/" alt="img"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;原型链-prototype&quot;&gt;&lt;a href=&quot;#原型链-prototype&quot; class=&quot;headerlink&quot; title=&quot;原型链(prototype)&quot;&gt;&lt;/a&gt;原型链(prototype)&lt;/h3&gt;&lt;p&gt;  javascript 权威指南读书笔记&lt;/p
+      
+    
+    </summary>
+    
+    
+      <category term="js" scheme="https://apenshar.github.io/myBlog/tags/js/"/>
+    
+      <category term="面向对象编程" scheme="https://apenshar.github.io/myBlog/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/"/>
+    
+      <category term="原型链" scheme="https://apenshar.github.io/myBlog/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/"/>
     
   </entry>
   
