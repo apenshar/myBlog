@@ -1,0 +1,223 @@
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> C++超度指南第一弹 · Apen Shar's Tech Blog</title><meta name="description" content="C++超度指南第一弹 - Apen Shar"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/myBlog/favicon.png"><link rel="stylesheet" href="/myBlog/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="https://apenshar.github.io/myBlog/atom.xml" title="Apen Shar's Tech Blog"></head><body><div class="wrap"><header><a href="/myBlog/" class="logo-link"><img src="/myBlog/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/myBlog/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/myBlog/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="/myBlog/tags" target="_self" class="nav-list-link">TAGS</a></li><li class="nav-list-item"><a href="https://weibo.com/u/5104206638" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/apenshar" target="_blank" class="nav-list-link">GITHUB</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">C++超度指南第一弹</h1><div class="post-info">Feb 10, 2018</div><div class="post-content"><blockquote>
+<p>以下是我最近学习C++时所摘录的md笔记，拿出来献丑了，希望能帮助看到此篇的小白们快速入门，顺利超度！</p>
+</blockquote>
+<h3 id="C-简介"><a href="#C-简介" class="headerlink" title="C++简介"></a>C++简介</h3><p>C++ 是一种静态类型的、编译式的、通用的、大小写敏感的、不规则的编程语言，支持过程化编程、面向对象编程和泛型编程。<br>C++ 被认为是一种中级语言，它综合了高级语言和低级语言的特点。<br>C++ 是由 Bjarne Stroustrup 于 1979 年在新泽西州美利山贝尔实验室开始设计开发的。<br>C++ 是 C 的一个超集，事实上，任何合法的 C 程序都是合法的 C++ 程序。</p>
+<h3 id="面向对象程序设计"><a href="#面向对象程序设计" class="headerlink" title="面向对象程序设计"></a>面向对象程序设计</h3><p>C++ 完全支持面向对象的程序设计，包括面向对象开发的四大特性：</p>
+<ol>
+<li>封装</li>
+<li>抽象</li>
+<li>继承</li>
+<li>多态</li>
+</ol>
+<h3 id="标准库"><a href="#标准库" class="headerlink" title="标准库"></a>标准库</h3><p>标准的 C++ 由三个重要部分组成：</p>
+<ol>
+<li>核心语言，提供了所有构件块，包括变量、数据类型和常量，等等。</li>
+<li>C++ 标准库，提供了大量的函数，用于操作文件、字符串等。</li>
+<li>标准模板库（STL），提供了大量的方法，用于操作数据结构等。</li>
+</ol>
+<p>程序 g++ 是将 gcc 默认语言设为 C++ 的一个特殊的版本，链接时它自动使用 C++ 标准库而不用 C 标准库。通过遵循源码的命名规范并指定对应库的名字，用 gcc 来编译链接 C++ 程序是可行的，如下例所示：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ g++ helloworld.cpp</span><br></pre></td></tr></table></figure></p>
+<p>通常我们使用<code>-o</code> 选项指定可执行程序的文件名，以下实例生成一个 helloworld 的可执行文件：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ g++ helloworld.cpp -o helloworld</span><br></pre></td></tr></table></figure></p>
+<p>执行 helloworld:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ./helloworld</span><br><span class="line">Hello, world!</span><br></pre></td></tr></table></figure></p>
+<h3 id="C-程序结构"><a href="#C-程序结构" class="headerlink" title="C++ 程序结构"></a>C++ 程序结构</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="built_in">cout</span> &lt;&lt; <span class="string">"Hello World"</span>; <span class="comment">// 输出 Hello World</span></span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>C++ 语言定义了一些头文件，这些头文件包含了程序中必需的或有用的信息。上面这段程序中，引入了头文件 <iostream>。</iostream></li>
+<li>下一行 using namespace std; 告诉编译器使用 std 命名空间。命名空间是 C++ 中一个相对新的概念。</li>
+<li>下一行<code>int main()</code>是主函数，程序从这里开始执行。</li>
+<li>下一行<code>cout &lt;&lt; &quot;Hello World&quot;;</code> 会在屏幕上显示消息 “Hello World”。</li>
+<li>下一行 return 0; 终止 main( )函数，并向调用进程返回值 0。</li>
+</ol>
+<h3 id="分号和块"><a href="#分号和块" class="headerlink" title="分号和块"></a>分号和块</h3><p>在 C++ 中，分号是语句结束符。也就是说，每个语句必须以分号结束。它表明一个逻辑实体的结束。<br>++ 不以行末作为结束符的标识，因此，您可以在一行上放置多个语句。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x = y; y = y+<span class="number">1</span>; add(x, y);</span><br></pre></td></tr></table></figure></p>
+<h3 id="三字符组"><a href="#三字符组" class="headerlink" title="三字符组"></a>三字符组</h3><p>三字符组就是用于表示另一个字符的三个字符序列，又称为三字符序列。三字符序列总是以两个问号开头。三字符序列不太常见，但 C++ 标准允许把某些字符指定为三字符序列。以前为了表示键盘上没有的字符，这是必不可少的一种方法。</p>
+<table>
+<thead>
+<tr>
+<th>a</th>
+<th>b</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>??=</td>
+<td>#</td>
+</tr>
+<tr>
+<td>??/</td>
+<td>\</td>
+</tr>
+<tr>
+<td>??’</td>
+<td>^</td>
+</tr>
+<tr>
+<td>??(</td>
+<td>[</td>
+</tr>
+<tr>
+<td>??)</td>
+<td>]</td>
+</tr>
+<tr>
+<td>??&lt;</td>
+<td>{</td>
+</tr>
+<tr>
+<td>??&gt;</td>
+<td>}</td>
+</tr>
+<tr>
+<td>??-</td>
+<td>~</td>
+</tr>
+</tbody>
+</table>
+<h3 id="空格"><a href="#空格" class="headerlink" title="空格"></a>空格</h3><p>在 C++ 中，空格用于描述空白符、制表符、换行符和注释。让编译器能识别语句中的某个元素（比如 int）在哪里结束，下一个元素在哪里开始。</p>
+<p>###　注释<br>C++ 支持单行注释和多行注释</p>
+<ol>
+<li>C++ 单行注释以 # 开头</li>
+<li>C++ 多行注释以 /<em> 开始，以 </em>/ 终止</li>
+<li>这里给大家介绍一种奇技淫巧吧，通过if判别式决定是否执行，同样也能达到注释的效果，<br>如果需要取消注释，你可以把<code>#if 0</code> 改成 <code>#if 1</code> 来执行 code 的代码。<br>这种形式对程序调试有很大帮助，测试时使用<code>#if 1</code> 来执行测试代码，发布后使用 #if 0 来屏蔽测试代码。</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">if</span> 0</span></span><br><span class="line">   code</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><table>
+<thead>
+<tr>
+<th>col1</th>
+<th>col2 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>布尔型</td>
+<td>bool</td>
+</tr>
+<tr>
+<td>字符型</td>
+<td>char</td>
+</tr>
+<tr>
+<td>整型</td>
+<td>int</td>
+</tr>
+<tr>
+<td>浮点型</td>
+<td>float</td>
+</tr>
+<tr>
+<td>双浮点型</td>
+<td>double</td>
+</tr>
+<tr>
+<td>无类型</td>
+<td>void</td>
+</tr>
+<tr>
+<td>宽字符型</td>
+<td>wchar_t</td>
+</tr>
+</tbody>
+</table>
+<p>一些基本类型可以使用一个或多个类型修饰符进行修饰：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>类</th>
+<th>范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>char</td>
+<td>1个字节</td>
+<td>-128 到 127 或者 0 到 255</td>
+</tr>
+<tr>
+<td>unsigned char</td>
+<td>1个字节</td>
+<td>0 到 255</td>
+</tr>
+<tr>
+<td>signed char</td>
+<td>1个字节</td>
+<td>-128 到 127 </td>
+</tr>
+<tr>
+<td>int</td>
+<td>4 个字节</td>
+<td>-2147483648 到 2147483647</td>
+</tr>
+<tr>
+<td>unsigned int</td>
+<td>4个字节</td>
+<td>0 到 4294967295</td>
+</tr>
+<tr>
+<td>signed int</td>
+<td>4个字节</td>
+<td>-2147483648 到 2147483647</td>
+</tr>
+<tr>
+<td>short int</td>
+<td>2个字节</td>
+<td>-32768 到 32767</td>
+</tr>
+<tr>
+<td>unsigned short int</td>
+<td>2个字节</td>
+<td>0 到 65,535</td>
+</tr>
+<tr>
+<td>signed short int</td>
+<td>2个字节</td>
+<td>-32768 到 32767</td>
+</tr>
+<tr>
+<td>long int</td>
+<td>8个字节</td>
+<td>-9,223,372,036,854,775,808 到 9,223,372,036,854,775,807</td>
+</tr>
+<tr>
+<td>signed long int</td>
+<td>8个字节</td>
+<td>-9,223,372,036,854,775,808 到 9,223,372,036,854,775,807</td>
+</tr>
+</tbody>
+</table>
+<p>下面实例会输出您电脑上各种数据类型的大小。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;  </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;limits&gt;  </span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;  </span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"type: \t\t"</span> &lt;&lt; <span class="string">"************size**************"</span>&lt;&lt; <span class="built_in">endl</span>;  </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"bool: \t\t"</span> &lt;&lt; <span class="string">"所占字节数："</span> &lt;&lt; <span class="keyword">sizeof</span>(<span class="keyword">bool</span>);  </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"\t最大值："</span> &lt;&lt; (numeric_limits&lt;<span class="keyword">bool</span>&gt;::max)();  </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"\t\t最小值："</span> &lt;&lt; (numeric_limits&lt;<span class="keyword">bool</span>&gt;::min)() &lt;&lt; <span class="built_in">endl</span>;  </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"char: \t\t"</span> &lt;&lt; <span class="string">"所占字节数："</span> &lt;&lt; <span class="keyword">sizeof</span>(<span class="keyword">char</span>);  </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"\t最大值："</span> &lt;&lt; (numeric_limits&lt;<span class="keyword">char</span>&gt;::max)();  </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"\t\t最小值："</span> &lt;&lt; (numeric_limits&lt;<span class="keyword">char</span>&gt;::min)() &lt;&lt; <span class="built_in">endl</span>;  </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"signed char: \t"</span> &lt;&lt; <span class="string">"所占字节数："</span> &lt;&lt; <span class="keyword">sizeof</span>(<span class="keyword">signed</span> <span class="keyword">char</span>);  </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"\t最大值："</span> &lt;&lt; (numeric_limits&lt;<span class="keyword">signed</span> <span class="keyword">char</span>&gt;::max)();  </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"\t\t最小值："</span> &lt;&lt; (numeric_limits&lt;<span class="keyword">signed</span> <span class="keyword">char</span>&gt;::min)() &lt;&lt; <span class="built_in">endl</span>;  </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"unsigned char: \t"</span> &lt;&lt; <span class="string">"所占字节数："</span> &lt;&lt; <span class="keyword">sizeof</span>(<span class="keyword">unsigned</span> <span class="keyword">char</span>);  </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"\t最大值："</span> &lt;&lt; (numeric_limits&lt;<span class="keyword">unsigned</span> <span class="keyword">char</span>&gt;::max)();  </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"\t\t最小值："</span> &lt;&lt; (numeric_limits&lt;<span class="keyword">unsigned</span> <span class="keyword">char</span>&gt;::min)() &lt;&lt; <span class="built_in">endl</span>;  </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"wchar_t: \t"</span> &lt;&lt; <span class="string">"所占字节数："</span> &lt;&lt; <span class="keyword">sizeof</span>(<span class="keyword">wchar_t</span>);  </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"\t最大值："</span> &lt;&lt; (numeric_limits&lt;<span class="keyword">wchar_t</span>&gt;::max)();  </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"\t\t最小值："</span> &lt;&lt; (numeric_limits&lt;<span class="keyword">wchar_t</span>&gt;::min)() &lt;&lt; <span class="built_in">endl</span>;  </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"short: \t\t"</span> &lt;&lt; <span class="string">"所占字节数："</span> &lt;&lt; <span class="keyword">sizeof</span>(<span class="keyword">short</span>);  </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"\t最大值："</span> &lt;&lt; (numeric_limits&lt;<span class="keyword">short</span>&gt;::max)();  </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"\t\t最小值："</span> &lt;&lt; (numeric_limits&lt;<span class="keyword">short</span>&gt;::min)() &lt;&lt; <span class="built_in">endl</span>;  </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"int: \t\t"</span> &lt;&lt; <span class="string">"所占字节数："</span> &lt;&lt; <span class="keyword">sizeof</span>(<span class="keyword">int</span>);  </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"\t最大值："</span> &lt;&lt; (numeric_limits&lt;<span class="keyword">int</span>&gt;::max)();  </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"\t最小值："</span> &lt;&lt; (numeric_limits&lt;<span class="keyword">int</span>&gt;::min)() &lt;&lt; <span class="built_in">endl</span>;  </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"unsigned: \t"</span> &lt;&lt; <span class="string">"所占字节数："</span> &lt;&lt; <span class="keyword">sizeof</span>(<span class="keyword">unsigned</span>);  </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"\t最大值："</span> &lt;&lt; (numeric_limits&lt;<span class="keyword">unsigned</span>&gt;::max)();  </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"\t最小值："</span> &lt;&lt; (numeric_limits&lt;<span class="keyword">unsigned</span>&gt;::min)() &lt;&lt; <span class="built_in">endl</span>;  </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"long: \t\t"</span> &lt;&lt; <span class="string">"所占字节数："</span> &lt;&lt; <span class="keyword">sizeof</span>(<span class="keyword">long</span>);  </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"\t最大值："</span> &lt;&lt; (numeric_limits&lt;<span class="keyword">long</span>&gt;::max)();  </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"\t最小值："</span> &lt;&lt; (numeric_limits&lt;<span class="keyword">long</span>&gt;::min)() &lt;&lt; <span class="built_in">endl</span>;  </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"unsigned long: \t"</span> &lt;&lt; <span class="string">"所占字节数："</span> &lt;&lt; <span class="keyword">sizeof</span>(<span class="keyword">unsigned</span> <span class="keyword">long</span>);  </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"\t最大值："</span> &lt;&lt; (numeric_limits&lt;<span class="keyword">unsigned</span> <span class="keyword">long</span>&gt;::max)();  </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"\t最小值："</span> &lt;&lt; (numeric_limits&lt;<span class="keyword">unsigned</span> <span class="keyword">long</span>&gt;::min)() &lt;&lt; <span class="built_in">endl</span>;  </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"double: \t"</span> &lt;&lt; <span class="string">"所占字节数："</span> &lt;&lt; <span class="keyword">sizeof</span>(<span class="keyword">double</span>);  </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"\t最大值："</span> &lt;&lt; (numeric_limits&lt;<span class="keyword">double</span>&gt;::max)();  </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"\t最小值："</span> &lt;&lt; (numeric_limits&lt;<span class="keyword">double</span>&gt;::min)() &lt;&lt; <span class="built_in">endl</span>;  </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"long double: \t"</span> &lt;&lt; <span class="string">"所占字节数："</span> &lt;&lt; <span class="keyword">sizeof</span>(<span class="keyword">long</span> <span class="keyword">double</span>);  </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"\t最大值："</span> &lt;&lt; (numeric_limits&lt;<span class="keyword">long</span> <span class="keyword">double</span>&gt;::max)();  </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"\t最小值："</span> &lt;&lt; (numeric_limits&lt;<span class="keyword">long</span> <span class="keyword">double</span>&gt;::min)() &lt;&lt; <span class="built_in">endl</span>;  </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"float: \t\t"</span> &lt;&lt; <span class="string">"所占字节数："</span> &lt;&lt; <span class="keyword">sizeof</span>(<span class="keyword">float</span>);  </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"\t最大值："</span> &lt;&lt; (numeric_limits&lt;<span class="keyword">float</span>&gt;::max)();  </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"\t最小值："</span> &lt;&lt; (numeric_limits&lt;<span class="keyword">float</span>&gt;::min)() &lt;&lt; <span class="built_in">endl</span>;  </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"size_t: \t"</span> &lt;&lt; <span class="string">"所占字节数："</span> &lt;&lt; <span class="keyword">sizeof</span>(<span class="keyword">size_t</span>);  </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"\t最大值："</span> &lt;&lt; (numeric_limits&lt;<span class="keyword">size_t</span>&gt;::max)();  </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"\t最小值："</span> &lt;&lt; (numeric_limits&lt;<span class="keyword">size_t</span>&gt;::min)() &lt;&lt; <span class="built_in">endl</span>;  </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"string: \t"</span> &lt;&lt; <span class="string">"所占字节数："</span> &lt;&lt; <span class="keyword">sizeof</span>(<span class="built_in">string</span>) &lt;&lt; <span class="built_in">endl</span>;  </span><br><span class="line">    <span class="comment">// &lt;&lt; "\t最大值：" &lt;&lt; (numeric_limits&lt;string&gt;::max)() &lt;&lt; "\t最小值：" &lt;&lt; (numeric_limits&lt;string&gt;::min)() &lt;&lt; endl;  </span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"type: \t\t"</span> &lt;&lt; <span class="string">"************size**************"</span>&lt;&lt; <span class="built_in">endl</span>;  </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>output:<br>这里使用了 <code>endl</code>换行，这将在每一行后插入一个换行符，&lt;&lt; 运算符用于向屏幕传多个值。 sizeof() 函数可获取各种数据类型的大小。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">type:         ************size**************</span><br><span class="line"><span class="keyword">bool</span>:         所占字节数：<span class="number">1</span>    最大值：<span class="number">1</span>        最小值：<span class="number">0</span></span><br><span class="line"><span class="keyword">char</span>:         所占字节数：<span class="number">1</span>    最大值：        最小值：?</span><br><span class="line"><span class="keyword">signed</span> <span class="keyword">char</span>:     所占字节数：<span class="number">1</span>    最大值：        最小值：?</span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">char</span>:     所占字节数：<span class="number">1</span>    最大值：?        最小值：</span><br><span class="line"><span class="keyword">wchar_t</span>:     所占字节数：<span class="number">4</span>    最大值：<span class="number">2147483647</span>        最小值：<span class="number">-2147483648</span></span><br><span class="line"><span class="keyword">short</span>:         所占字节数：<span class="number">2</span>    最大值：<span class="number">32767</span>        最小值：<span class="number">-32768</span></span><br><span class="line"><span class="keyword">int</span>:         所占字节数：<span class="number">4</span>    最大值：<span class="number">2147483647</span>    最小值：<span class="number">-2147483648</span></span><br><span class="line"><span class="keyword">unsigned</span>:     所占字节数：<span class="number">4</span>    最大值：<span class="number">4294967295</span>    最小值：<span class="number">0</span></span><br><span class="line"><span class="keyword">long</span>:         所占字节数：<span class="number">8</span>    最大值：<span class="number">9223372036854775807</span>    最小值：<span class="number">-9223372036854775808</span></span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">long</span>:     所占字节数：<span class="number">8</span>    最大值：<span class="number">18446744073709551615</span>    最小值：<span class="number">0</span></span><br><span class="line"><span class="keyword">double</span>:     所占字节数：<span class="number">8</span>    最大值：<span class="number">1.79769e+308</span>    最小值：<span class="number">2.22507e-308</span></span><br><span class="line"><span class="keyword">long</span> <span class="keyword">double</span>:     所占字节数：<span class="number">16</span>    最大值：<span class="number">1.18973e+4932</span>    最小值：<span class="number">3.3621e-4932</span></span><br><span class="line"><span class="keyword">float</span>:         所占字节数：<span class="number">4</span>    最大值：<span class="number">3.40282e+38</span>    最小值：<span class="number">1.17549e-38</span></span><br><span class="line"><span class="keyword">size_t</span>:     所占字节数：<span class="number">8</span>    最大值：<span class="number">18446744073709551615</span>    最小值：<span class="number">0</span></span><br><span class="line"><span class="built_in">string</span>:     所占字节数：<span class="number">24</span></span><br><span class="line">type:         ************size**************</span><br></pre></td></tr></table></figure></p>
+<h3 id="typedef-声明"><a href="#typedef-声明" class="headerlink" title="typedef 声明"></a>typedef 声明</h3><p>您可以使用 typedef 为一个已有的类型取一个新的名字。下面是使用 typedef 定义一个新类型的语法：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span>　<span class="keyword">int</span> feet</span><br></pre></td></tr></table></figure></p>
+<p>现在，下面的声明是完全合法的，它创建了一个整型变量 distance：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">feet distance;</span><br></pre></td></tr></table></figure></p>
+<h3 id="枚举类型"><a href="#枚举类型" class="headerlink" title="枚举类型"></a>枚举类型</h3><p>枚举类型(enumeration)是C++中的一种派生数据类型，它是由用户定义的若干枚举常量的集合。<br>如果一个变量只有几种可能的值，可以定义为枚举(enumeration)类型。所谓”枚举”是指将变量的值一一列举出来，变量的值只能在列举出来的值的范围内。<br>创建枚举，需要使用关键字 enum。枚举类型的一般形式为：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> color &#123; red, green, blue &#125; c;</span><br><span class="line">c = blue;</span><br></pre></td></tr></table></figure></p>
+<p>默认情况下，第一个名称的值为 0，第二个名称的值为 1，第三个名称的值为 2，以此类推。但是，您也可以给名称赋予一个特殊的值，只需要添加一个初始值即可。例如，在下面的枚举中，green 的值为 5。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> color &#123; red, green=<span class="number">5</span>, blue &#125;;</span><br></pre></td></tr></table></figure></p>
+<p>在这里，blue 的值为 6，因为默认情况下，每个名称都会比它前面一个名称大 1，但 red 的值依然为 0。</p>
+<h3 id="时间类型"><a href="#时间类型" class="headerlink" title="时间类型"></a>时间类型</h3><p>C++ 标准库没有提供所谓的日期类型。C++ 继承了 C 语言用于日期和时间操作的结构和函数。为了使用日期和时间相关的函数和结构，需要在 C++ 程序中引用 <ctime> 头文件。</ctime></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctime&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">( )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="comment">// 基于当前系统的当前日期/时间</span></span><br><span class="line">   <span class="keyword">time_t</span> now = time(<span class="number">0</span>);</span><br><span class="line">   </span><br><span class="line">   <span class="comment">// 把 now 转换为字符串形式</span></span><br><span class="line">   <span class="keyword">char</span>* dt = ctime(&amp;now);</span><br><span class="line"> </span><br><span class="line">   <span class="built_in">cout</span> &lt;&lt; <span class="string">"本地日期和时间："</span> &lt;&lt; dt &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"> </span><br><span class="line">   <span class="comment">// 把 now 转换为 tm 结构</span></span><br><span class="line">   tm *gmtm = gmtime(&amp;now);</span><br><span class="line">   dt = asctime(gmtm);</span><br><span class="line">   <span class="built_in">cout</span> &lt;&lt; <span class="string">"UTC 日期和时间："</span>&lt;&lt; dt &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>output:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">本地日期和时间：Sat Jan  <span class="number">8</span> <span class="number">20</span>:<span class="number">07</span>:<span class="number">41</span> <span class="number">2011</span></span><br><span class="line"></span><br><span class="line">UTC 日期和时间：Sun Jan  <span class="number">9</span> <span class="number">03</span>:<span class="number">07</span>:<span class="number">41</span> <span class="number">2011</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="C-基本的输入输出"><a href="#C-基本的输入输出" class="headerlink" title="C++ 基本的输入输出"></a>C++ 基本的输入输出</h3><p>I/O 库头文件</p>
+<table>
+<thead>
+<tr>
+<th>库</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&lt;iostream&gt;</td>
+<td>该文件定义了 cin、cout、cerr 和 clog 对象，分别对应于标准输入流、标准输出流、非缓冲标准错误流和缓冲标准错误流 </td>
+</tr>
+<tr>
+<td>&lt;iomanip&gt;</td>
+<td>　该文件通过所谓的参数化的流操纵器（比如 setw 和 setprecision），来声明对执行标准化 I/O 有用的服务</td>
+</tr>
+<tr>
+<td>&lt;fstream&gt;</td>
+<td>该文件为用户控制的文件处理声明服务。我们将在文件和流的相关章节讨论它的细节。</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">( )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="keyword">char</span> name[<span class="number">50</span>];</span><br><span class="line"> </span><br><span class="line">   <span class="built_in">cout</span> &lt;&lt; <span class="string">"请输入您的名称： "</span>;</span><br><span class="line">   <span class="built_in">cin</span> &gt;&gt; name;</span><br><span class="line">   <span class="built_in">cout</span> &lt;&lt; <span class="string">"您的名称是： "</span> &lt;&lt; name &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>标准输入流<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">请输入您的名称： cplusplus</span><br><span class="line">您的名称是： cplusplus</span><br></pre></td></tr></table></figure></p>
+<p>标准错误流（cerr）<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">( )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="keyword">char</span> str[] = <span class="string">"Unable to read...."</span>;</span><br><span class="line"> </span><br><span class="line">   <span class="built_in">cerr</span> &lt;&lt; <span class="string">"Error message : "</span> &lt;&lt; str &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>当上面的代码被编译和执行时，它会产生下列结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Error message : Unable to read....</span><br></pre></td></tr></table></figure></p>
+</div></article></div></main><footer><div class="paginator"><a href="/myBlog/2018-02-10-CPP-learn02.html" class="prev">PREV</a><a href="/myBlog/2018-02-04-git-introduce.html" class="next">NEXT</a></div><div class="copyright"><p>© 2017 - 2018 <a href="https://apenshar.github.io/myBlog">Apen Shar</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>
