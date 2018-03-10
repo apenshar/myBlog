@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://apenshar.github.io/myBlog/2018-03-10-node-crawl-musicforprogramming.html</loc>
+    
+    <lastmod>2018-03-10T10:48:10.960Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://apenshar.github.io/myBlog/2018-03-09-are-thre-pointers-in-js.html</loc>
     
     <lastmod>2018-03-10T07:37:06.091Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>https://apenshar.github.io/myBlog/2018-03-08-node-crawl-pokemon-tcg.html</loc>
     
     <lastmod>2018-03-10T07:24:50.363Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://apenshar.github.io/myBlog/2018-03-10-node-crawl-musicforprogramming.html</loc>
-    
-    <lastmod>2018-03-10T07:15:06.211Z</lastmod>
     
   </url>
   
