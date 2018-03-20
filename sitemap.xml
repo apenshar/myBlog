@@ -2,23 +2,65 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://apenshar.github.io/myBlog/2018-03-10-node-crawl-musicforprogramming.html</loc>
+    <loc>https://apenshar.github.io/myBlog/2018-03-08-node-crawl-pokemon-tcg.html</loc>
     
-    <lastmod>2018-03-10T10:48:10.960Z</lastmod>
+    <lastmod>2018-03-20T04:12:01.957Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://apenshar.github.io/myBlog/2018-03-09-are-thre-pointers-in-js.html</loc>
     
-    <lastmod>2018-03-10T07:37:06.091Z</lastmod>
+    <lastmod>2018-03-20T04:11:49.894Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://apenshar.github.io/myBlog/2018-03-08-node-crawl-pokemon-tcg.html</loc>
+    <loc>https://apenshar.github.io/myBlog/2018-03-20-js-crypto-getRandomValues.html</loc>
     
-    <lastmod>2018-03-10T07:24:50.363Z</lastmod>
+    <lastmod>2018-03-20T04:10:58.704Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://apenshar.github.io/myBlog/2018-01-30-RegExp-segment.html</loc>
+    
+    <lastmod>2018-03-20T03:50:46.048Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://apenshar.github.io/myBlog/2017-12-28-localStorage-introduce.html</loc>
+    
+    <lastmod>2018-03-20T03:50:21.837Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://apenshar.github.io/myBlog/2018-03-08-js-document-hidden.html</loc>
+    
+    <lastmod>2018-03-20T03:42:22.096Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://apenshar.github.io/myBlog/2018-03-08-setTimeout-introduce.html</loc>
+    
+    <lastmod>2018-03-20T03:38:34.438Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://apenshar.github.io/myBlog/2018-03-20-extends-function-for-jQuery.html</loc>
+    
+    <lastmod>2018-03-20T03:07:33.636Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://apenshar.github.io/myBlog/2018-03-10-node-crawl-musicforprogramming.html</loc>
+    
+    <lastmod>2018-03-10T10:48:10.960Z</lastmod>
     
   </url>
   
@@ -37,13 +79,6 @@
   </url>
   
   <url>
-    <loc>https://apenshar.github.io/myBlog/2017-12-28-localStorage-introduce.html</loc>
-    
-    <lastmod>2018-03-09T08:54:23.860Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://apenshar.github.io/myBlog/2018-01-27-class-introduce.html</loc>
     
     <lastmod>2018-03-09T08:53:53.857Z</lastmod>
@@ -58,16 +93,9 @@
   </url>
   
   <url>
-    <loc>https://apenshar.github.io/myBlog/2018-01-27-prototype-introduce.html</loc>
+    <loc>https://apenshar.github.io/myBlog/2018-01-27-js-prototype-introduce.html</loc>
     
     <lastmod>2018-03-09T08:53:07.776Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://apenshar.github.io/myBlog/2018-03-08-js-document-hidden.html</loc>
-    
-    <lastmod>2018-03-08T16:30:24.937Z</lastmod>
     
   </url>
   
@@ -82,13 +110,6 @@
     <loc>https://apenshar.github.io/myBlog/2018-02-04-git-introduce.html</loc>
     
     <lastmod>2018-03-08T16:29:48.005Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://apenshar.github.io/myBlog/2018-03-08-promise-introduce.html</loc>
-    
-    <lastmod>2018-03-08T15:57:27.041Z</lastmod>
     
   </url>
   
@@ -159,13 +180,6 @@
     <loc>https://apenshar.github.io/myBlog/2018-01-27-canvas-introduce.html</loc>
     
     <lastmod>2018-02-10T09:29:28.282Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://apenshar.github.io/myBlog/2018-01-30-RegExp-segment.html</loc>
-    
-    <lastmod>2018-02-10T09:23:50.327Z</lastmod>
     
   </url>
   
